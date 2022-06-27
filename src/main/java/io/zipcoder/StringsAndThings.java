@@ -14,8 +14,17 @@ public class StringsAndThings {
      *           countYZ("day fez"); // Should return 2
      *           countYZ("day fyyyz"); // Should return 2
      */
+
+    String[] input = {"hey there governor"};
     public Integer countYZ(String input){
-        return null;
+        String[] words = input.split(" ");
+        Integer count = 0;
+        for (int i =0; i < words.length; i++) {
+            if (words[i].charAt(words[i].length() - 1) == 'y' || words[i].charAt(words[i].length() - 1) == 'z' ) {
+                count++;
+            }
+        }
+        return count;
     }
 
     /**
@@ -65,4 +74,6 @@ public class StringsAndThings {
     public Integer countTriple(String input){
         return null;
     }
+
+
 }
