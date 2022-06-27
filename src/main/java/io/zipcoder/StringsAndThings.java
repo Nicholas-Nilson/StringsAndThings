@@ -13,25 +13,24 @@ public class StringsAndThings {
      * but not the 'y' in "yellow" (not case sensitive). We'll say that a y or z is at the end of a word if there is not an alphabetic
      * letter immediately following it. (Note: Character.isLetter(char) tests if a char is an alphabetic letter.)
      * example : countYZ("fez day"); // Should return 2
-     *           countYZ("day fez"); // Should return 2
-     *           countYZ("day fyyyz"); // Should return 2
+     * countYZ("day fez"); // Should return 2
+     * countYZ("day fyyyz"); // Should return 2
      */
 
-    public Integer countYZ(String input){
+    public Integer countYZ(String input) {
         String[] words = input.split(" ");
         Integer count = 0;
         Integer reverseIterator = 1;
-        for (int i =0; i < words.length; i++) {
+        for (int i = 0; i < words.length; i++) {
             //below checks if last character is a numeric digit. If it is, it is marked true.
             boolean reverseFlag = Character.isDigit(words[i].charAt(words[i].length() - reverseIterator));
-              if (reverseFlag) {
-                reverseIterator++ ;
-                i = i-1;
+            if (reverseFlag) {
+                reverseIterator++;
+                i = i - 1;
+            } else if (words[i].charAt(words[i].length() - reverseIterator) == 'y' || words[i].charAt(words[i].length() - reverseIterator) == 'z') {
+                count++;
+                reverseIterator = 1;
             }
-              else if (words[i].charAt(words[i].length() - reverseIterator) == 'y' || words[i].charAt(words[i].length() - reverseIterator) == 'z' ) {
-                  count++;
-                  reverseIterator = 1;
-              }
         }
         return count;
     }
@@ -40,12 +39,12 @@ public class StringsAndThings {
      * Given two strings, base and remove, return a version of the base string where all instances of the remove string have
      * been removed (not case sensitive). You may assume that the remove string is length 1 or more.
      * Remove only non-overlapping instances, so with "xxx" removing "xx" leaves "x".
-     *
+     * <p>
      * example : removeString("Hello there", "llo") // Should return "He there"
-     *           removeString("Hello there", "e") //  Should return "Hllo thr"
-     *           removeString("Hello there", "x") // Should return "Hello there"
+     * removeString("Hello there", "e") //  Should return "Hllo thr"
+     * removeString("Hello there", "x") // Should return "Hello there"
      */
-    public String removeString(String base, String remove){
+    public String removeString(String base, String remove) {
         String alteredString = base;
         while (alteredString.contains(remove)) {
             alteredString = alteredString.replaceFirst(remove, "");
@@ -56,14 +55,14 @@ public class StringsAndThings {
     /**
      * Given a string, return true if the number of appearances of "is" anywhere in the string is equal
      * to the number of appearances of "not" anywhere in the string (case sensitive)
-     *
+     * <p>
      * example : containsEqualNumberOfIsAndNot("This is not")  // Should return false
-     *           containsEqualNumberOfIsAndNot("This is notnot") // Should return true
-     *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
+     * containsEqualNumberOfIsAndNot("This is notnot") // Should return true
+     * containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     //Jiayong had a nice way of doing this. He compared the length of the original string to a string with all the 'is''s
     // and another with all the 'not's removed.
-    public Boolean containsEqualNumberOfIsAndNot(String input){
+    public Boolean containsEqualNumberOfIsAndNot(String input) {
 //        Integer isCount = 0;
 //        Integer notCount =0;
 //        boolean match = false;
@@ -81,7 +80,7 @@ public class StringsAndThings {
 
         //the method Jiayong shared. Avoids using loops. More efficient, no loops.
         String isString = input;
-        String notString =input;
+        String notString = input;
         isString.replace("is", "");
         notString.replace("not", "");
         if ((input.length() - isString.length()) / "is".length() == (input.length() - notString.length()) / "not".length()) {
@@ -95,13 +94,30 @@ public class StringsAndThings {
      * We'll say that a lowercase 'g' in a string is "happy" if there is another 'g' immediately to its left or right.
      * Return true if all the g's in the given string are happy.
      * example : gHappy("xxggxx") // Should return  true
-     *           gHappy("xxgxx") // Should return  false
-     *           gHappy("xxggyygxx") // Should return  false
+     * gHappy("xxgxx") // Should return  false
+     * gHappy("xxggyygxx") // Should return  false
      */
-    public Boolean gIsHappy(String input){
-    return null;
-//        (words[i].charAt(words[i].length() - reverseIterator) == 'y' || words[i].charAt(words[i].length() - reverseIterator)
+
+    //I need to study this one more. I needed a lot of help with setting this one up. ending the loop once
+    // a 'g' is unhappy made sense. Test for all those if none of those unhappy 'g's show up, return true;.
+    public Boolean gIsHappy(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if( input.charAt(i) == 'g') {
+                if(i == 0 && input.charAt(i+1) != 'g') {
+                    return false;
+                } else if (i == input.length() -1 && input.charAt(i-1) != 'g') {
+                    return false;
+                } else if (input.charAt(i+1) != 'g' && input.charAt(i-1) != 'g') {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
+}
+
+//        (words[i].charAt(words[i].length() - reverseIterator) == 'y' || words[i].charAt(words[i].length() - reverseIterator)
+
 
 
     /**
@@ -111,9 +127,9 @@ public class StringsAndThings {
      *            countTriple("xxxabyyyycd") // Should return 3
      *            countTriple("a") // Should return 0
      */
-    public Integer countTriple(String input){
-        return null;
-    }
-
-
-}
+//    public Integer countTriple(String input){
+//        return null;
+//    }
+//
+//
+//}
