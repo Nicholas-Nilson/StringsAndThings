@@ -100,7 +100,8 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        return null;
+
+//        (words[i].charAt(words[i].length() - reverseIterator) == 'y' || words[i].charAt(words[i].length() - reverseIterator)
     }
 
 
