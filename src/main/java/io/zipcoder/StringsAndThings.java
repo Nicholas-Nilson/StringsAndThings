@@ -17,7 +17,6 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
 
-    String[] input = {"hey there governor"};
     public Integer countYZ(String input){
         String[] words = input.split(" ");
         Integer count = 0;
@@ -85,7 +84,7 @@ public class StringsAndThings {
         String notString =input;
         isString.replace("is", "");
         notString.replace("not", "");
-        if (isString.length() -isString.length() / "is".length() == notString.length() - notString.length() / "not".length()) {
+        if ((input.length() - isString.length()) / "is".length() == (input.length() - notString.length()) / "not".length()) {
             return true;
         }
         return false;
@@ -100,7 +99,7 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-
+    return null;
 //        (words[i].charAt(words[i].length() - reverseIterator) == 'y' || words[i].charAt(words[i].length() - reverseIterator)
     }
 
