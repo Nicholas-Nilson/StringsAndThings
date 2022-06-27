@@ -23,6 +23,7 @@ public class StringsAndThings {
         Integer count = 0;
         Integer reverseIterator = 1;
         for (int i =0; i < words.length; i++) {
+            //below checks if last character is a numeric digit. If it is, it is marked true.
             boolean reverseFlag = Character.isDigit(words[i].charAt(words[i].length() - reverseIterator));
               if (reverseFlag) {
                 reverseIterator++ ;
@@ -61,8 +62,26 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("This is notnot") // Should return true
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
+    //Jiayong had a nice way of doing this. He compared the length of the original string to a string with all the 'is''s
+    // and another with all the 'not's removed.
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        Integer isCount = 0;
+        Integer notCount =0;
+        boolean match = false;
+        String modifiedString = input;
+        while (modifiedString.contains("is")) {
+            modifiedString = modifiedString.replaceFirst("is", "");
+            isCount++;
+        }while (modifiedString.contains("not")) {
+            modifiedString = modifiedString.replaceFirst("not", "");
+            notCount++;
+        } if (isCount == notCount) {
+            return match = true;
+        }
+        return match;
+
+
+
     }
 
     /**
