@@ -19,10 +19,17 @@ public class StringsAndThings {
     public Integer countYZ(String input){
         String[] words = input.split(" ");
         Integer count = 0;
+        Integer reverseIterator = 1;
         for (int i =0; i < words.length; i++) {
-            if (words[i].charAt(words[i].length() - 1) == 'y' || words[i].charAt(words[i].length() - 1) == 'z' ) {
-                count++;
+            boolean reverseFlag = Character.isDigit(words[i].charAt(words[i].length() - reverseIterator));
+              if (reverseFlag) {
+                reverseIterator++ ;
+                i = i-1;
             }
+              else if (words[i].charAt(words[i].length() - reverseIterator) == 'y' || words[i].charAt(words[i].length() - reverseIterator) == 'z' ) {
+                  count++;
+                  reverseIterator = 1;
+              }
         }
         return count;
     }
