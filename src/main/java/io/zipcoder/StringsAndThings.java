@@ -65,22 +65,30 @@ public class StringsAndThings {
     //Jiayong had a nice way of doing this. He compared the length of the original string to a string with all the 'is''s
     // and another with all the 'not's removed.
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        Integer isCount = 0;
-        Integer notCount =0;
-        boolean match = false;
-        String modifiedString = input;
-        while (modifiedString.contains("is")) {
-            modifiedString = modifiedString.replaceFirst("is", "");
-            isCount++;
-        }while (modifiedString.contains("not")) {
-            modifiedString = modifiedString.replaceFirst("not", "");
-            notCount++;
-        } if (isCount == notCount) {
-            return match = true;
+//        Integer isCount = 0;
+//        Integer notCount =0;
+//        boolean match = false;
+//        String modifiedString = input;
+//        while (modifiedString.contains("is")) {
+//            modifiedString = modifiedString.replaceFirst("is", "");
+//            isCount++;
+//        }while (modifiedString.contains("not")) {
+//            modifiedString = modifiedString.replaceFirst("not", "");
+//            notCount++;
+//        } if (isCount == notCount) {
+//            return match = true;
+//        }
+//        return match;
+
+        //the method Jiayong shared. Avoids using loops. More efficient, no loops.
+        String isString = input;
+        String notString =input;
+        isString.replace("is", "");
+        notString.replace("not", "");
+        if (isString.length() -isString.length() / "is".length() == notString.length() - notString.length() / "not".length()) {
+            return true;
         }
-        return match;
-
-
+        return false;
 
     }
 
