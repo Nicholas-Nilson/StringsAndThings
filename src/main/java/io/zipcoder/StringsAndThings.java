@@ -1,6 +1,8 @@
 package io.zipcoder;
 
 
+import java.util.Arrays;
+
 /**
  * @author tariq
  */
@@ -44,7 +46,11 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+        String alteredString = base;
+        while (alteredString.contains(remove)) {
+            alteredString = alteredString.replaceFirst(remove, "");
+        }
+        return alteredString;
     }
 
     /**
