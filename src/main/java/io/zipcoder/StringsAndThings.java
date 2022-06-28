@@ -78,16 +78,17 @@ public class StringsAndThings {
 //        }
 //        return match;
 
-        //the method Jiayong shared. Avoids using loops. More efficient, no loops.
-        String isString = input;
-        String notString = input;
-        isString.replace("is", "");
-        notString.replace("not", "");
-        if ((input.length() - isString.length()) / "is".length() == (input.length() - notString.length()) / "not".length()) {
-            return true;
+//        the method Jiayong shared. Avoids using loops. More efficient.
+//        String isString = input;
+//        String notString = input;
+        String isString = input.replaceAll("is", "");
+        String notString = input.replaceAll("not", "");
+        Integer isLength = "is".length();
+        Integer notLength = "not".length();
+        if ((input.length() - isString.length()) / isLength != (input.length() - notString.length()) / notLength){
+            return false;
         }
-        return false;
-
+        return true;
     }
 
     /**
@@ -114,7 +115,7 @@ public class StringsAndThings {
         }
         return true;
     }
-}
+
 
 //        (words[i].charAt(words[i].length() - reverseIterator) == 'y' || words[i].charAt(words[i].length() - reverseIterator)
 
@@ -127,9 +128,10 @@ public class StringsAndThings {
      *            countTriple("xxxabyyyycd") // Should return 3
      *            countTriple("a") // Should return 0
      */
-//    public Integer countTriple(String input){
-//        return null;
-//    }
+    public Integer countTriple(String input){
+        return null;
+    }
+}
 //
 //
 //}
