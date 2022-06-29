@@ -19,7 +19,7 @@ public class CountYZTest {
 
     @Test
     public void countYZTest1(){
-        String input = "fez day";
+        String input = "fez1 day";
         Integer expected = 2;
         Integer actual = stringsAndThings.countYZ(input);
         Assert.assertEquals(expected, actual);
@@ -36,7 +36,7 @@ public class CountYZTest {
 
     @Test
     public void countYZTest3 (){
-        String input = "day fyyyz";
+        String input = "day fyyyz33";
         Integer expected = 2;
         Integer actual = stringsAndThings.countYZ(input);
         Assert.assertEquals(expected, actual);
